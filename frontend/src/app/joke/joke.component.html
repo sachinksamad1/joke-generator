@@ -1,0 +1,22 @@
+<div class="joke-container">
+    <h1>Joke Generator</h1>
+    
+    <button mat-raised-button color="primary" (click)="fetchJoke()" [disabled]="isLoading">
+      {{ isLoading ? 'Loading...' : 'Tell me a joke!' }}
+    </button>
+  
+    <div *ngIf="isLoading" class="spinner-container">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+  
+    <div *ngIf="error" class="error-message">
+      <mat-icon>error</mat-icon>
+      {{ error }}
+    </div>
+  
+    <div *ngIf="joke && !isLoading" class="joke-content">
+      <p class="setup">{{ joke.setup }}</p>
+      <p class="punchline">{{ joke.punchline }}</p>
+      <p class="category">Category: {{ joke.type }}</p>
+    </div>
+  </div>
